@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="AGENDA DE TELEFÓNO"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="631dp"
+        android:layout_height="145dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.19">
+
+        <ImageButton
+            android:id="@+id/btnAdd"
+            android:layout_width="200dp"
+            android:layout_height="90dp"
+            android:backgroundTint="#00913f"
+            app:srcCompat="@mipmap/ic_launcher_foreground" />
+
+        <ImageButton
+            android:id="@+id/btnSearch"
+            android:layout_width="220dp"
+            android:layout_height="90dp"
+            android:backgroundTint="#ff6600"
+            app:srcCompat="@mipmap/ic_search" />
+
+        <ImageButton
+            android:id="@+id/btnDelete"
+            android:layout_width="200dp"
+            android:layout_height="90dp"
+            android:backgroundTint="#ff0000"
+            app:srcCompat="@mipmap/ic_trash" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btnExit"
+        android:layout_width="220dp"
+        android:layout_height="90dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:srcCompat="@mipmap/ic_exit" />
+</androidx.constraintlayout.widget.ConstraintLayout>

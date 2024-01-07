@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.app3">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.App3">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <!-- quiere decir que es la principal -->
+                <action android:name="android.intent.action.MAIN" />
+                <!-- dice que lo ponga en la lista de actividades del telefono-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+<!--
+Tenemos el ciclo de vida de una app
+    onCreate()
+    OnStart()
+    OnResume()
+    onPause()
+    onStop()
+    OnDestroy()
+
+1. `onCreate()`
+   - Tu actividad es creada. Se llama solo una vez en t0do el ciclo de vida de la actividad. Ideal para inicializaciones que deben ocurrir una sola vez.
+
+2. `onStart()`
+   - Tu actividad está a punto de ser mostrada al usuario. Sigue a `onCreate()`, o se llama después de `onRestart()` si la actividad está volviendo desde el estado detenido.
+
+3. `onResume()`
+   - Tu actividad es visible y en primer plano. Se llama después de `onStart()`, o después de `onPause()` si la actividad está volviendo del estado pausado. La actividad ahora puede interactuar con el usuario.
+
+(En este punto, si algo interrumpe tu actividad, como una llamada entrante en un teléfono, o si el usuario navega a otra actividad o aplicación, entonces se llaman los siguientes métodos en secuencia para pausar y eventualmente detener tu actividad.)
+
+4. `onPause()`
+   - Tu actividad ya no tiene el foco y puede ser pausada. Se llama cuando el sistema está a punto de reanudar una actividad anterior o cuando se llama `onStop()`.
+
+5. `onStop()`
+   - Tu actividad ya no es visible. Puede ser llamada después de `onPause()`, o directamente antes de `onDestroy()` si la actividad está siendo finalizada.
+
+(En este punto, si el usuario regresa a tu actividad, se llama al método `onRestart()`, que no está en tu lista, pero que simplemente reinicia el ciclo llamando a `onStart()` nuevamente.)
+
+6. `onDestroy()`
+   - Tu actividad está siendo destruida y eliminada de la memoria. Esto puede ser debido a que se llamó al método `finish()` o porque el sistema decidió destruir la actividad para liberar recursos.
+
+Si visualizas este proceso, puedes imaginarlo como una progresión en la que la actividad se mueve desde el inicio (`onCreate()`) hasta la interacción completa con el usuario (`onResume()`), y luego retrocede a través de la pausa y la detención hasta que finalmente se destruye (`onDestroy()`). Si se detiene pero luego el usuario regresa a ella, regresa al estado `onStart()` y luego avanza nuevamente.
+
+onCreate() -> onStart() -> onResume()
+Aquí, la actividad se ha creado, ha comenzado y ahora está en ejecución y visible para el usuario.
+
+Si ocurre algún evento que cause que la actividad pierda el foco, como la apertura de una nueva actividad:
+
+scss
+Copy code
+onResume() -> onPause() -> onStop()
+Si el usuario regresa a la actividad:
+
+scss
+Copy code
+onStop() -> onStart() -> onResume()
+Finalmente, cuando la actividad se destruye:
+
+scss
+Copy code
+onStop() -> onDestroy()
+Notarás que onPause() siempre precede a onStop(), y onStart() siempre precede a onResume(). Además, onDestroy() puede ser llamado después de onPause() o onStop(), dependiendo de si el sistema necesita recuperar recursos inmediatamente.
+
+La secuencia completa, en términos de flujo sería:
+
+scss
+Copy code
+onCreate() -> onStart() -> onResume() -> onPause() -> onStop() -> onDestroy()
+Sin embargo, es importante recordar que una actividad puede "revivir" desde onStop() con onStart() si el usuario regresa a ella. ¡Espero que esto te ayude a visualizar mejor el ciclo de vida de una actividad!
+
+
+-->
+</manifest>
